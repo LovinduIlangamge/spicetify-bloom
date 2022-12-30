@@ -28,13 +28,13 @@
 ### Windows (Powershell)
 
 ```powershell
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.ps1" | Invoke-Expression
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/LovinduIlangamge/spicetify-bloom/main/install.ps1" | Invoke-Expression
 ```
 
 ### Linux/macOS (Bash)
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nimsandu/spicetify-bloom/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/LovinduIlangamge/spicetify-bloom/main/install.sh | bash
 ```
 
 <details>
