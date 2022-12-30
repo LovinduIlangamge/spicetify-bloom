@@ -29,7 +29,7 @@ if [ -d "$themePath" ]; then
 fi
 
 # Download latest master
-zipUri="https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
+zipUri="https://github.com/LovinduIlangamge/spicetify-bloom/archive/refs/heads/master.zip"
 zipSavePath="/tmp/bloom-main.zip"
 echo "Downloading bloom-spicetify latest master..."
 curl --fail --location --progress-bar "$zipUri" --output "$zipSavePath"
@@ -49,11 +49,19 @@ mkdir -p "$spicePath/Extensions"
 ln -sf "../Themes/bloom/bloom.js" "$spicePath/Extensions/bloom.js" 
 echo "+ Installed bloom.js extension"
 
+# Link the adblock.js to the Extensions folder
+mkdir -p "$spicePath/Extensions"
+[[ -f "$spicePath/Extensions/adblock.js" ]] && rm "$spicePath/Extensions/adblock.js"
+ln -sf "../Themes/bloom/adblock.js" "$spicePath/Extensions/adblock.js" 
+echo "+ Installed adblock.js extension"
+
 # Apply the theme with spicetify config calls
 spicetify config extensions bloom.js
+spicetify config extensions adblock.js
 spicetify config current_theme bloom
 spicetify config color_scheme dark
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify auto
+# spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 echo "+ Configured Bloom theme"
 
 # Patch the xpui.js for sidebar fixes

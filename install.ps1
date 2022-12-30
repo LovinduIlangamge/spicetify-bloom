@@ -25,7 +25,7 @@ if (-not (Test-Path $themePath)) {
 }
 
 # Download latest master
-$zipUri = "https://github.com/nimsandu/spicetify-bloom/archive/refs/heads/master.zip"
+$zipUri = "https://github.com/LovinduIlangamge/spicetify-bloom/archive/refs/heads/master.zip"
 $zipSavePath = "$themePath\bloom-main.zip"
 Write-Host "Downloading spicetify-bloom latest master..."
 Invoke-WebRequest -Uri $zipUri -UseBasicParsing -OutFile $zipSavePath
@@ -47,11 +47,17 @@ Set-Location $themePath
 Copy-Item bloom.js ..\..\Extensions
 Write-Host "+ Installed bloom.js theme"
 
+# Copy the adblock.js to the Extensions folder
+Copy-Item adblock.js ..\..\Extensions
+Write-Host "+ Installed adblock.js theme"
+
 # Apply the theme with spicetify config calls
 spicetify config extensions bloom.js
+spicetify config extensions adblock.js
 spicetify config current_theme bloom
 spicetify config color_scheme dark
-spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
+spicetify auto
+#spicetify config inject_css 1 replace_colors 1 overwrite_assets 1
 Write-Host "+ Configured bloom theme"
 
 # Patch the xpui.js for sidebar fixes
